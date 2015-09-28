@@ -12,7 +12,7 @@
 
 ##### Build defaults #####
 LUA_VERSION =       5.1
-TARGET =            cjson.so
+TARGET =            json.so
 PREFIX =            /usr/local
 #CFLAGS =            -g -Wall -pedantic -fno-inline
 CFLAGS =            -O3 -Wall -pedantic -DNDEBUG
@@ -45,7 +45,7 @@ LUA_BIN_DIR =       $(PREFIX)/bin
 #CJSON_CFLAGS =      -fpic -DUSE_INTERNAL_ISINF
 
 ## Windows (MinGW)
-#TARGET =            cjson.dll
+#TARGET =            json.dll
 #PREFIX =            /home/user/opt
 #CJSON_CFLAGS =      -DDISABLE_INVALID_NUMBERS
 #CJSON_LDFLAGS =     -shared -L$(PREFIX)/lib -llua51

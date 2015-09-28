@@ -45,20 +45,22 @@
 
 #ifdef _MSC_VER
 # define inline __inline
-# define snprintf _snprintf 
-# define strncasecmp _strnicmp 
+# define snprintf _snprintf
+# define strncasecmp _strnicmp
 #endif
 
 #include "strbuf.h"
 #include "fpconv.h"
 
 #ifndef CJSON_MODNAME
-#define CJSON_MODNAME   "cjson"
+#define CJSON_MODNAME   "json"
 #endif
 
 #ifndef CJSON_VERSION
 #define CJSON_VERSION   "2.1devel"
 #endif
+
+#define ENABLE_CJSON_GLOBAL true
 
 /* Workaround for Solaris platforms missing isinf() */
 #if !defined(isinf) && (defined(USE_INTERNAL_ISINF) || defined(MISSING_ISINF))
@@ -1229,7 +1231,7 @@ static void json_parse_array_context(lua_State *l, json_parse_t *json)
 
     /* Handle empty arrays */
     if (token.type == T_ARR_END) {
-        // Mark as array:
+        /* Mark as array: */
         luaL_getmetatable(l, "array");
         lua_setmetatable(l, -2);
 
@@ -1460,7 +1462,7 @@ static int lua_cjson_safe_new(lua_State *l)
     return 1;
 }
 
-int luaopen_cjson(lua_State *l)
+int luaopen_json(lua_State *l)
 {
     lua_cjson_new(l);
 
@@ -1474,7 +1476,7 @@ int luaopen_cjson(lua_State *l)
     return 1;
 }
 
-int luaopen_cjson_safe(lua_State *l)
+int luaopen_json_safe(lua_State *l)
 {
     lua_cjson_safe_new(l);
 
